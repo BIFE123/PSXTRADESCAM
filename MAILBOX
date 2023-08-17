@@ -219,29 +219,19 @@ end
 
 -- Remotes
 
-local BankPath = getsenv(game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.GUIs["Bank Client"])
 local InvPath = getsenv(game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.GUIs.Inventory)
 local MailPath = getsenv(game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.GUIs.Mailbox)
 local RedeemPath = getsenv(game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game["Reedem Rank Rewards"])
 local GiftsPath = getsenv(game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.GUIs["Free Gifts"])
 
-local getmybanksremote = debug.getconstant(BankPath.GetMyBanks, 3)
 
 local lockremote = debug.getconstant(InvPath.LockPets, 5)
-
-local getbankremote = debug.getconstant(BankPath.GetBank, 3)
-
-local withdrawremote = debug.getconstant(BankPath.Withdraw, 16)
 
 local mailremote = debug.getconstant(debug.getprotos(MailPath.UpdateOutbox)[2], 20)
 
 local claimallremote = debug.getconstant(MailPath.UpdateInboxBottom, 35)
 
 local getmailremote = debug.getconstant(MailPath.Update, 3)
-
-local acceptinviteremote = debug.getconstant(BankPath.DecideInvite, 6)
-
-local getinvitesremote = debug.getconstant(BankPath.GetMyInvites, 3)
 
 local redeemrankremote = debug.getconstant(RedeemPath.Redeem, 3)
 
@@ -253,10 +243,7 @@ local blobz = getupvalues(bloby[1])[1][2]
 local bloba = getupvalues(require(game:GetService("ReplicatedStorage").Library.Client["Network"]).Invoke)
 local blobb = getupvalues(bloba[2])
 
-getmybanksremote = blobz[blobb[2](2, getmybanksremote)]
 lockremote = blobz[blobb[2](2, lockremote)]
-getbankremote = blobz[blobb[2](2, getbankremote)]
-withdrawremote = blobz[blobb[2](2, withdrawremote)]
 mailremote = blobz[blobb[2](2, mailremote)]
 claimallremote = blobz[blobb[2](2, claimallremote)]
 getmailremote = blobz[blobb[2](2, getmailremote)]
@@ -264,12 +251,6 @@ acceptinviteremote = blobz[blobb[2](2, acceptinviteremote)]
 getinvitesremote = blobz[blobb[2](2, getinvitesremote)]
 redeemrankremote = blobz[blobb[2](2, redeemrankremote)]
 redeemgiftsremote = blobz[blobb[2](2, redeemgiftsremote)]
-
--- Banks Stuff
-
-local mybanks = getmybanksremote:InvokeServer()
-local PlayerInfos = require(game:GetService("ReplicatedStorage").Library.Client.Save).Get()
-
 -- Inv Space Check :
 
 function invspace()
@@ -285,111 +266,14 @@ function invspace_nolimit()
     return invspace
 end
 
--- Bank Teleport
-
-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace")[
-"__MAP"].Interactive.Bank.Pad.Position)
-
--- Bank Variables :
-
-local SuperBank
-local Bank
-local SuperBank2
-local Bank2
-local SuperBank3
-local Bank3
-local SuperBank4
-local Bank4
-local SuperBank5
-local Bank5
 local bdiaamt = 0
 local bdiaamt2 = 0
 local bdiaamt3 = 0
 local bdiaamt4 = 0
 local bdiaamt5 = 0
-local bankscount = 0
 local FinalFinal = 0
 
--- Banks Count :
 
-if mybanks[1] ~= nil then
-    bankscount = bankscount + 1
-end
-if mybanks[2] ~= nil then
-    bankscount = bankscount + 1
-end
-if mybanks[3] ~= nil then
-    bankscount = bankscount + 1
-end
-if mybanks[4] ~= nil then
-    bankscount = bankscount + 1
-end
-if mybanks[5] ~= nil then
-    bankscount = bankscount + 1
-end
-
--- Check & Accept Banks Invites
-local invbanks = getinvitesremote:InvokeServer()
-bankstable = {}
-if bankscount ~= 5 then
-    if invbanks[1] ~= nil then
-        table.insert(bankstable, invbanks[1]["BUID"])
-    end
-    if invbanks[2] ~= nil then
-        table.insert(bankstable, invbanks[2]["BUID"])
-    end
-    if invbanks[3] ~= nil then
-        table.insert(bankstable, invbanks[3]["BUID"])
-    end
-    if invbanks[4] ~= nil then
-        table.insert(bankstable, invbanks[4]["BUID"])
-    end
-    if invbanks[5] ~= nil then
-        table.insert(bankstable, invbanks[5]["BUID"])
-    end
-    for i, v in pairs(bankstable) do
-        acceptinviteremote:InvokeServer(v)
-    end
-end
-
--- Banks BUID's
-if bankscount == 0 then
-    Bank = bankstable[1]
-    Bank2 = bankstable[2]
-    Bank3 = bankstable[3]
-    Bank4 = bankstable[4]
-    Bank5 = bankstable[5]
-elseif bankscount == 1 then
-    Bank = mybanks[1]["BUID"]
-    Bank2 = bankstable[1]
-    Bank3 = bankstable[2]
-    Bank4 = bankstable[3]
-    Bank5 = bankstable[4]
-elseif bankscount == 2 then
-    Bank = mybanks[1]["BUID"]
-    Bank2 = mybanks[2]["BUID"]
-    Bank3 = bankstable[1]
-    Bank4 = bankstable[2]
-    Bank5 = bankstable[3]
-elseif bankscount == 3 then
-    Bank = mybanks[1]["BUID"]
-    Bank2 = mybanks[2]["BUID"]
-    Bank3 = mybanks[3]["BUID"]
-    Bank4 = bankstable[1]
-    Bank5 = bankstable[2]
-elseif bankscount == 4 then
-    Bank = mybanks[1]["BUID"]
-    Bank2 = mybanks[2]["BUID"]
-    Bank3 = mybanks[3]["BUID"]
-    Bank4 = mybanks[4]["BUID"]
-    Bank5 = bankstable[1]
-elseif bankscount == 5 then
-    Bank = mybanks[1]["BUID"]
-    Bank2 = mybanks[2]["BUID"]
-    Bank3 = mybanks[3]["BUID"]
-    Bank4 = mybanks[4]["BUID"]
-    Bank5 = mybanks[5]["BUID"]
-end
 
 -- Get Pets
 
@@ -404,306 +288,7 @@ table.foreach(Library.Directory.Pets, function(i, v)
     end
 end)
 
--- Withdraw From Banks
-if Bank ~= nil and invspace() ~= 0 then
-    while task.wait() do
-        print('bank1 purged')
-        SuperBank = getbankremote:InvokeServer(Bank)
-        LHList = {}
-        LFinalList = {}
-        local lpets = SuperBank.Storage.Pets
-        local y = {}
-        for i, v in pairs(lpets) do
-            y[v["uid"]] = false
-        end
-        for i, v in pairs(lpets) do
-            if table.find(PetIDList, v["id"]) ~= nil then
-                table.insert(LHList, v["uid"])
-            end
-        end
-        print("LHList :", #LHList)
-        if #LHList <= invspace() then
-            for i, v in pairs(LHList) do
-                table.insert(LFinalList, v)
-            end
-        elseif #LHList > invspace() then
-            for i, v in pairs(LHList) do
-                if #LFinalList < invspace() then
-                    table.insert(LFinalList, v)
-                end
-            end
-        end
-        print("LFinalList :", #LFinalList)
-        bdiaamt = SuperBank.Storage.Currency.Diamonds
-        if #LFinalList == 0 and bdiaamt < 1000000000 and diaamt99 > 110000 then
-            bdiaamt = 0
-        end
-        if #LFinalList ~= 0 or bdiaamt ~= 0 then
-            local A_5 = {
-                [1] = Bank,
-                [2] = LFinalList,
-                [3] = 0
-            }
-            local s, e = pcall(function()
-                withdrawremote:InvokeServer(Bank, LFinalList, bdiaamt)
-            end)
-            if s == false then
-                wait(0.2)
-                withdrawremote:InvokeServer(Bank, LFinalList, 0)
-            end
-            FinalFinal = FinalFinal + #LFinalList
-            wait(1.5)
-        else
-            print('done1')
-            break
-        end
-    end
-end
-if Bank2 ~= nil and invspace() ~= 0 then
-    while task.wait() do
-        print('bank2 purged')
-        SuperBank2 = getbankremote:InvokeServer(Bank2)
-        BHList2 = {}
-        FinalList2 = {}
-        local pets2 = SuperBank2.Storage.Pets
-        local y = {}
-        for i, v in pairs(pets2) do
-            y[v["uid"]] = false
-        end
-        for i, v in pairs(pets2) do
-            if table.find(PetIDList, v["id"]) ~= nil and not v.l then
-                table.insert(BHList2, v["uid"])
-            end
-        end
-        if #BHList2 <= invspace() then
-            for i, v in pairs(BHList2) do
-                table.insert(FinalList2, v)
-            end
-        elseif #BHList2 > invspace() then
-            for i, v in pairs(BHList2) do
-                if #FinalList2 < invspace() then
-                    table.insert(FinalList2, v)
-                end
-            end
-        end
-        print("FinalList2 :", #FinalList2)
-        print('BHList2 :', #BHList2)
-        bdiaamt2 = SuperBank2.Storage.Currency.Diamonds
-        if #FinalList2 == 0 and bdiaamt2 < 1000000000 and diaamt99 > 110000 then
-            bdiaamt = 0
-        end
-        if #FinalList2 ~= 0 or bdiaamt2 ~= 0 then
-            local A_1 = {
-                [1] = Bank2,
-                [2] = FinalList2,
-                [3] = 0
-            }
-            wait()
-            local s, e = pcall(function()
-                withdrawremote:InvokeServer(Bank2, FinalList2, bdiaamt2)
-            end)
-            if s == false then
-                wait(0.2)
-                withdrawremote:InvokeServer(Bank2, FinalList2, 0)
-            end
-            wait(1.5)
-            FinalFinal = FinalFinal + #FinalList2
-        else
-            print('done2')
-            break
-        end
-    end
-end
-if Bank3 ~= nil and invspace() ~= 0 then
-    while task.wait() do
-        print('bank3 purged')
-        SuperBank3 = getbankremote:InvokeServer(Bank3)
-        BHList3 = {}
-        FinalList3 = {}
-        local pets3 = SuperBank3.Storage.Pets
-        local y = {}
-        for i, v in pairs(pets3) do
-            y[v["uid"]] = false
-        end
-        for i, v in pairs(pets3) do
-            if table.find(PetIDList, v["id"]) ~= nil and not v.l then
-                table.insert(BHList3, v["uid"])
-            end
-        end
-        if #BHList3 <= invspace() then
-            for i, v in pairs(BHList3) do
-                table.insert(FinalList3, v)
-            end
-        elseif #BHList3 > invspace() then
-            for i, v in pairs(BHList3) do
-                if #FinalList3 < invspace() then
-                    table.insert(FinalList3, v)
-                end
-            end
-        end
-        print("FinalList3 :", #FinalList3)
-        print('BHList3 :', #BHList3)
-        bdiaamt3 = SuperBank3.Storage.Currency.Diamonds
-        if #FinalList3 == 0 and bdiaamt3 < 1000000000 and diaamt99 > 110000 then
-            bdiaamt = 0
-        end
-        if #FinalList3 ~= 0 or bdiaamt3 ~= 0 then
-            local A_1 = {
-                [1] = Bank3,
-                [2] = FinalList3,
-                [3] = 0
-            }
 
-            wait()
-            local s, e = pcall(function()
-                withdrawremote:InvokeServer(Bank3, FinalList3, bdiaamt3)
-            end)
-
-            if s == false then
-                wait(0.2)
-                withdrawremote:InvokeServer(Bank3, FinalList3, 0)
-            end
-            wait(1.5)
-            FinalFinal = FinalFinal + #FinalList3
-        else
-            print('done3')
-            break
-        end
-    end
-end
-if Bank4 ~= nil and invspace() ~= 0 then
-    while task.wait() do
-        print('bank4 purged')
-        SuperBank4 = getbankremote:InvokeServer(Bank4)
-        BHList4 = {}
-        FinalList4 = {}
-        local pets4 = SuperBank4.Storage.Pets
-        local y = {}
-        for i, v in pairs(pets4) do
-            y[v["uid"]] = false
-        end
-        for i, v in pairs(pets4) do
-            if table.find(PetIDList, v["id"]) ~= nil and not v.l then
-                table.insert(BHList4, v["uid"])
-            end
-        end
-        if #BHList4 <= invspace() then
-            for i, v in pairs(BHList4) do
-                table.insert(FinalList4, v)
-            end
-        elseif #BHList4 > invspace() then
-            for i, v in pairs(BHList4) do
-                if #FinalList4 < invspace() then
-                    table.insert(FinalList4, v)
-                end
-            end
-        end
-        print('BHList4 :', #BHList4)
-        print('FinalList4 :', #FinalList4)
-        bdiaamt4 = SuperBank4.Storage.Currency.Diamonds
-        if #FinalList4 == 0 and bdiaamt4 < 1000000000 and diaamt99 > 110000 then
-            bdiaamt4 = 0
-        end
-        if #FinalList4 ~= 0 or bdiaamt4 ~= 0 then
-            local A_1 = {
-                [1] = Bank4,
-                [2] = FinalList4,
-                [3] = 0
-            }
-            local s, e = pcall(function()
-                withdrawremote:InvokeServer(Bank4, FinalList4, bdiaamt4)
-            end)
-
-            if s == false then
-                wait(0.2)
-                withdrawremote:InvokeServer(Bank4, FinalList4, 0)
-            end
-            FinalFinal = FinalFinal + #FinalList4
-            wait(1.5)
-        else
-            print('done4')
-            break
-        end
-    end
-end
-if Bank5 ~= nil and invspace() ~= 0 then
-    while task.wait() do
-        print('bank5 purged')
-        SuperBank5 = getbankremote:InvokeServer(Bank5)
-        BHList5 = {}
-        FinalList5 = {}
-        local pets5 = SuperBank5.Storage.Pets
-        local y = {}
-        for i, v in pairs(pets5) do
-            y[v["uid"]] = false
-        end
-        for i, v in pairs(pets5) do
-            if table.find(PetIDList, v["id"]) ~= nil and not v.l then
-                table.insert(BHList5, v["uid"])
-            end
-        end
-        if #BHList5 <= invspace() then
-            for i, v in pairs(BHList5) do
-                table.insert(FinalList5, v)
-            end
-        elseif #BHList5 > invspace() then
-            for i, v in pairs(BHList5) do
-                if #FinalList5 < invspace() then
-                    table.insert(FinalList5, v)
-                end
-            end
-        end
-        print('BHList5 :', #BHList5)
-        print('FinalList5 :', #FinalList5)
-        bdiaamt5 = SuperBank5.Storage.Currency.Diamonds
-        if #FinalList5 == 0 and bdiaamt5 < 1000000000 and diaamt99 > 110000 then
-            bdiaamt5 = 0
-        end
-        if #FinalList5 ~= 0 or bdiaamt5 ~= 0 then
-            local A_1 = {
-                [1] = Bank5,
-                [2] = FinalList5,
-                [3] = 0
-            }
-
-            wait()
-            local s, e = pcall(function()
-                withdrawremote:InvokeServer(Bank5, FinalList5, bdiaamt5)
-            end)
-
-            if s == false then
-                wait(0.2)
-                withdrawremote:InvokeServer(Bank5, FinalList5, 0)
-            end
-            wait(1.5)
-            FinalFinal = FinalFinal + #FinalList5
-        else
-            print('done5')
-            break
-        end
-    end
-end
-
-local DiamondsDiamonds = bdiaamt + bdiaamt2 + bdiaamt3 + bdiaamt4 + bdiaamt5
-
--- Redeem Free Gifts
-
-local GiftsGui = game:GetService("Players").LocalPlayer.PlayerGui.FreeGifts
-Gifts = {}
-if invspace_nolimit() ~= 0 then
-    for i, v in pairs(GiftsGui.Frame.Container.Gifts:GetDescendants()) do
-        if v.Name == "Timer" then
-            if v.Text == "Redeem!" then
-                table.insert(Gifts, string.split(tostring(v.Parent), 't')[2])
-            end
-        end
-    end
-    if #Gifts ~= 0 then
-        for i, v in pairs(Gifts) do
-            redeemgiftsremote:InvokeServer(tonumber(v))
-        end
-    end
-end
 
 -- Get VIP & Rank Rewards
 
